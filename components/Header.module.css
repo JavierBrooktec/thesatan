@@ -1,0 +1,38 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header_title{
+    font-size: 2rem;
+    flex: 1;
+    text-align: center;
+}
+.header_nav {
+    line-height: 0;
+}
+.header_hamburguer{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-direction: column;
+}
+.header_hamburguer li {
+    width: 1.5em;
+    height: .3em;
+    margin-bottom: .1em;
+    background-color: black;
+    border-radius: 84px;
+}
+
+.header_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.burguericon{
+    font-size: 2rem;
+}
