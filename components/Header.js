@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
-  const [listActive, setListActive] = useState(false);
+  const [listActive, setListActive] = useState(true);
 
   const handleHamburgueClick = e => {
     setListActive(!listActive);
@@ -13,43 +13,58 @@ function Header() {
 
   return (
     <header className={`${styles.header} content`}>
-      <div className={styles.header_title}>THE SATAN - LORD OF HELL</div>
-      <nav className={styles.header_nav}>
+      <div className={styles.header_container}>
+        <h1 className={styles.header_title}>THE SATAN - LORD OF HELL</h1>
         {listActive ? (
-          <FontAwesomeIcon className={styles.burguericon} icon={faTimes} onClick={handleHamburgueClick} />
-        ) : (
-          <ul
-            className={styles.header_hamburguer}
+          <FontAwesomeIcon
+            className={styles.burguericon}
+            icon={faTimes}
             onClick={handleHamburgueClick}
-          >
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+          />
+        ) : (
+          <FontAwesomeIcon
+            className={styles.burguericon}
+            icon={faBars}
+            onClick={handleHamburgueClick}
+          />
         )}
-      </nav>
-      <ul className={styles.header_list}>
-        <li>
-          <ActiveLink href='/'>
-            <a>Home</a>
-          </ActiveLink>
-          <ActiveLink href='/about'>
-            <a>About</a>
-          </ActiveLink>
-          <ActiveLink href='/about'>
-            <a>Galery</a>
-          </ActiveLink>
-          <ActiveLink href='/about'>
-            <a>Tour dates</a>
-          </ActiveLink>
-          <ActiveLink href='/about'>
-            <a>Newsletter</a>
-          </ActiveLink>
-          <ActiveLink href='/about'>
-            <a>shop</a>
-          </ActiveLink>
-        </li>
-      </ul>
+      </div>
+      {listActive ? (
+        <nav className={styles.header_nav}>
+          <ul className={styles.header_list}>
+            <li>
+              <ActiveLink href='/'>
+                <a>Home</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/about'>
+                <a>About</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/galery'>
+                <a>Galery</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/tourDates'>
+                <a>Tour dates</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/newsletter'>
+                <a>Newsletter</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/shop'>
+                <a>shop</a>
+              </ActiveLink>
+            </li>
+          </ul>
+        </nav>
+      ) : null}
     </header>
   );
 }
