@@ -29,42 +29,43 @@ function Header() {
           />
         )}
       </div>
-      {listActive ? (
-        <nav className={styles.header_nav}>
-          <ul className={styles.header_list}>
-            <li>
-              <ActiveLink href='/'>
-                <a>Home</a>
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href='/about'>
-                <a>About</a>
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href='/galery'>
-                <a>Galery</a>
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href='/tourDates'>
-                <a>Tour dates</a>
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href='/newsletter'>
-                <a>Newsletter</a>
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href='/shop'>
-                <a>shop</a>
-              </ActiveLink>
-            </li>
-          </ul>
-        </nav>
-      ) : null}
+      <nav
+        className={styles.header_nav}
+        style={{ display: listActive ? 'block' : 'none' }}
+      >
+        <ul className={styles.header_list}>
+          <li>
+            <ActiveLink href='/'>
+              <a>Home</a>
+            </ActiveLink>
+          </li>
+          <li>
+            <ActiveLink href='/about'>
+              <a>About</a>
+            </ActiveLink>
+          </li>
+          <li>
+            <ActiveLink href='/galery'>
+              <a>Galery</a>
+            </ActiveLink>
+          </li>
+          <li>
+            <ActiveLink href='/tourDates'>
+              <a>Tour dates</a>
+            </ActiveLink>
+          </li>
+          <li>
+            <ActiveLink href='/newsletter'>
+              <a>Newsletter</a>
+            </ActiveLink>
+          </li>
+          <li>
+            <ActiveLink href='/shop'>
+              <a>shop</a>
+            </ActiveLink>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
