@@ -1,36 +1,93 @@
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 import styles from './index.module.css';
+import img from '../assets/profile.jpg';
+import img2 from '../assets/skull.jpg';
+import img3 from '../assets/monster.png';
 import Parallax from 'parallax-js';
+import Carousel from 'react-multi-carousel';
 import React, { useEffect, useRef } from 'react';
 
 function Index() {
-  const scene = useRef(null);
-  let parallax;
-
-  useEffect(() => {
-    parallax = new Parallax(scene.current, {
-      // relativeInput: true,
-      clipRelativeInput: true
-    });
-    return () => {
-      parallax.disable();
-    };
-  }, []);
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
 
   return (
     <Layout>
       <Header></Header>
       <div className={'content'}>
         <section className={`${styles.news} ${styles.section}`}>
-          <h2 className={styles.section_title}>NEWS</h2>
-
-          <ul ref={scene}>
-            <li className='layer' data-depth='1.00'>
-              <img
-                className={styles.news_img}
-                src={require('../assets/profile.jpg')}
-              ></img>
+          <Carousel
+            additionalTransfrom={0}
+            arrows={false}
+            autoPlay={true}
+            autoPlaySpeed={10000}
+            centerMode={false}
+            className=''
+            containerClass='container-with-dots'
+            dotListClass=''
+            draggable
+            focusOnSelect={false}
+            infinite
+            itemClass=''
+            keyBoardControl
+            minimumTouchDrag={80}
+            renderButtonGroupOutside={false}
+            renderDotsOutside={false}
+            responsive={{
+              desktop: {
+                breakpoint: {
+                  max: 3000,
+                  min: 1024
+                },
+                items: 1,
+                partialVisibilityGutter: 40
+              },
+              mobile: {
+                breakpoint: {
+                  max: 464,
+                  min: 0
+                },
+                items: 1,
+                partialVisibilityGutter: 30
+              },
+              tablet: {
+                breakpoint: {
+                  max: 1024,
+                  min: 464
+                },
+                items: 1,
+                partialVisibilityGutter: 30
+              }
+            }}
+            showDots={false}
+            sliderClass=''
+            slidesToSlide={1}
+            swipeable
+          >
+            <div
+              className={styles.news_element}
+              style={{
+                backgroundImage: `url(${img3}) ,linear-gradient(90deg,rgba(0,0,0,0.8029586834733894) 0%,rgba(249,0,0,1) 30%,rgba(229,0,0,1) 70%,rgba(0,0,0,0.80015756302521) 100%)`
+              }}
+            >
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
                 leo tellus, condimentum nec pharetra in, iaculis ut sapien.
@@ -42,10 +99,45 @@ function Index() {
                 velit. Pellentesque sem purus, pretium vel magna a, sollicitudin
                 bibendum turpis. Sed viverra, ipsum at accumsan
               </p>
-            </li>
-          </ul>
-
-          <div style={{ clear: 'both' }}></div>
+            </div>
+            <div
+              className={styles.news_element}
+              style={{
+                backgroundImage: `url(${img})`
+              }}
+            >
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                leo tellus, condimentum nec pharetra in, iaculis ut sapien.
+                Proin vitae. Integer a vestibulum orci, quis dapibus leo. Duis
+                ut aliquam lectus, a gravida nisl. Praesent ut semper dolor, non
+                placerat massa. Mauris cursus gravida quam, vel pellentesque
+                ipsum pharetra et. Aliquam et suscipit sapien. Nam sit amet
+                efficitur ante. Vivamus bibendum tempus lectus. Sed ut tellus
+                velit. Pellentesque sem purus, pretium vel magna a, sollicitudin
+                bibendum turpis. Sed viverra, ipsum at accumsan
+              </p>
+            </div>
+            <div
+              className={styles.news_element}
+              style={{
+                backgroundImage: `url(${img2})`,
+                backgroundPosition: 'center'
+              }}
+            >
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                leo tellus, condimentum nec pharetra in, iaculis ut sapien.
+                Proin vitae. Integer a vestibulum orci, quis dapibus leo. Duis
+                ut aliquam lectus, a gravida nisl. Praesent ut semper dolor, non
+                placerat massa. Mauris cursus gravida quam, vel pellentesque
+                ipsum pharetra et. Aliquam et suscipit sapien. Nam sit amet
+                efficitur ante. Vivamus bibendum tempus lectus. Sed ut tellus
+                velit. Pellentesque sem purus, pretium vel magna a, sollicitudin
+                bibendum turpis. Sed viverra, ipsum at accumsan
+              </p>
+            </div>
+          </Carousel>
         </section>
         <section className={`${styles.releases} ${styles.section}`}>
           <h2 className={styles.section_title}>RELEASES</h2>
@@ -71,6 +163,12 @@ function Index() {
             suscipit sapien. Nam sit amet efficitur ante. Vivamus bibendum
             tempus lectus. Sed ut tellus velit. Pellentesque sem purus,
           </p>
+          <div className={styles.other_releases_grid}>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </section>
       </div>
     </Layout>
