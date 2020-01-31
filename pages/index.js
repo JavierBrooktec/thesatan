@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import styles from './index.module.css';
 import img from '../assets/profile.jpg';
@@ -171,6 +172,7 @@ function Index() {
           </div>
         </section>
       </div>
+      <Footer></Footer>
     </Layout>
   );
 }

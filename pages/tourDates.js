@@ -5,7 +5,9 @@ export default function TourDates() {
   return (
     <Layout>
       <Header></Header>
-      <p>This is the Tour Dates page</p>
+      <div className={'content'}>
+        <h1>THE SATAN TOUR DATES</h1>
+      </div>
     </Layout>
   );
 }

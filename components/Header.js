@@ -12,61 +12,67 @@ function Header() {
   };
 
   return (
-    <header className={`${styles.header} content`}>
-      <div className={styles.header_container}>
-        <h1 className={styles.header_title}>THE SATAN - LORD OF HELL</h1>
-        {listActive ? (
-          <FontAwesomeIcon
-            className={styles.burguericon}
-            icon={faTimes}
-            onClick={handleHamburgueClick}
-          />
-        ) : (
-          <FontAwesomeIcon
-            className={styles.burguericon}
-            icon={faBars}
-            onClick={handleHamburgueClick}
-          />
-        )}
-      </div>
-      <nav
-        className={styles.header_nav}
-        style={{ display: listActive ? 'block' : 'none' }}
-      >
-        <ul className={styles.header_list}>
-          <li>
-            <ActiveLink href='/'>
-              <a>Home</a>
-            </ActiveLink>
-          </li>
-          <li>
-            <ActiveLink href='/about'>
-              <a>About</a>
-            </ActiveLink>
-          </li>
-          <li>
-            <ActiveLink href='/galery'>
-              <a>Galery</a>
-            </ActiveLink>
-          </li>
-          <li>
-            <ActiveLink href='/tourDates'>
-              <a>Tour dates</a>
-            </ActiveLink>
-          </li>
-          <li>
-            <ActiveLink href='/newsletter'>
-              <a>Newsletter</a>
-            </ActiveLink>
-          </li>
-          <li>
-            <ActiveLink href='/shop'>
-              <a>shop</a>
-            </ActiveLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <div className={styles.header_up}>
+      <header className={`${styles.header} content`}>
+        <div className={styles.header_container}>
+          <h1 className={styles.header_title}>THE SATAN - LORD OF HELL</h1>
+          {listActive ? (
+            <FontAwesomeIcon
+              className={styles.burguericon}
+              icon={faTimes}
+              onClick={handleHamburgueClick}
+            />
+          ) : (
+            <FontAwesomeIcon
+              className={styles.burguericon}
+              icon={faBars}
+              onClick={handleHamburgueClick}
+            />
+          )}
+        </div>
+        <nav
+          className={`${styles.header_nav} ${
+            listActive ? styles.header_nav_open : styles.header_nav_closed
+          }`}
+          // style={{
+          //   display: listActive ? 'block' : 'none'
+          // }}
+        >
+          <ul className={styles.header_list}>
+            <li>
+              <ActiveLink href='/'>
+                <a>Home</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/about'>
+                <a>About</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/galery'>
+                <a>Galery</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/tourDates'>
+                <a>Tour dates</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/newsletter'>
+                <a>Newsletter</a>
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href='/shop'>
+                <a>shop</a>
+              </ActiveLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
   );
 }
 
