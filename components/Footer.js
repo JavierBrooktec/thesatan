@@ -19,35 +19,44 @@ export default function Footer() {
           <a href='#'>Cookies</a>{' '}
         </p>
         <div className={styles.social}>
-          <a target='_blank' href='https://www.instagram.com/the___satan/'>
+          <a className={`${styles.social_icon_link}`} target='_blank' href='https://www.instagram.com/the___satan/'>
             <FontAwesomeIcon
-              className={styles.social_icon}
+              className={`${styles.social_icon} ${styles.instagram}`}
               icon={faInstagram}
             />
           </a>
-          <a target='_blank' href='https://www.facebook.com/Satan666core/'>
+          <a className={`${styles.social_icon_link}`} target='_blank' href='https://www.facebook.com/Satan666core/'>
             <FontAwesomeIcon
-              className={styles.social_icon}
+              className={`${styles.social_icon} ${styles.facebook}`}
               icon={faFacebookSquare}
             />
           </a>
-          <a target='_blank' href='#'>
-            <FontAwesomeIcon className={styles.social_icon} icon={faTwitter} />
+          <a className={`${styles.social_icon_link}`} target='_blank' href='#'>
+            <FontAwesomeIcon
+              className={`${styles.social_icon} ${styles.twitter}`}
+              icon={faTwitter}
+            />
           </a>
-          <a
+          <a className={`${styles.social_icon_link}`}
             target='_blank'
             href='https://open.spotify.com/artist/4XCq6wVD10ui7rkXScdWvP?si=ue4fBH-5QhGl3tL7B5_0Kg'
           >
-            <FontAwesomeIcon className={styles.social_icon} icon={faSpotify} />
-          </a>
-          <a target='_blank' href='https://soundcloud.com/satan666'>
             <FontAwesomeIcon
-              className={styles.social_icon}
+              className={`${styles.social_icon} ${styles.spotify}`}
+              icon={faSpotify}
+            />
+          </a>
+          <a className={`${styles.social_icon_link}`} target='_blank' href='https://soundcloud.com/satan666'>
+            <FontAwesomeIcon
+              className={`${styles.social_icon} ${styles.soundcloud}`}
               icon={faSoundcloud}
             />
           </a>
-          <a target='_blank' href='#'>
-            <FontAwesomeIcon className={styles.social_icon} icon={faYoutube} />
+          <a className={`${styles.social_icon_link}`} target='_blank' href='#'>
+            <FontAwesomeIcon
+              className={`${styles.social_icon} ${styles.youtube}`}
+              icon={faYoutube}
+            />
           </a>
         </div>
       </footer>

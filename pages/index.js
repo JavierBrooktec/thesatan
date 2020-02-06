@@ -2,33 +2,43 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import styles from './index.module.css';
+import general from './general.module.css';
 import img from '../assets/profile.jpg';
 import img2 from '../assets/skull.jpg';
 import img3 from '../assets/monster.png';
-import Parallax from 'parallax-js';
 import Carousel from 'react-multi-carousel';
-import React, { useEffect, useRef } from 'react';
+import fetch from 'isomorphic-unfetch';
 
-function Index() {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
+import { css } from '@emotion/core';
+const override = css`
+  display: block;
+  margin: 0 auto;
+`;
+// First way to import
+// Another way to import. This is recommended to reduce bundle size
+import FadeLoader from 'react-spinners/FadeLoader';
+
+import React, { useEffect, useState } from 'react';
+
+function Index(props) {
+  const [songs, setSongs] = useState(null);
+  const [spinner, setSpinner] = useState(true);
+
+  useEffect(() => {
+    global.Headers = global.Headers || require('fetch-headers');
+
+    async function getSongs() {
+      const prueba = await fetch('/getTopSongs', {
+        method: 'GET'
+      });
+
+      const dataPrueba = await prueba.json();
+
+      setSongs(dataPrueba.songs);
     }
-  };
+
+    getSongs();
+  }, []);
 
   return (
     <Layout>
@@ -141,7 +151,7 @@ function Index() {
           </Carousel>
         </section>
         <section className={`${styles.releases} ${styles.section}`}>
-          <h2 className={styles.section_title}>RELEASES</h2>
+          <h2 className={general.section_title}>RELEASES</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis leo
             tellus, condimentum nec pharetra in, iaculis ut sapien. Proin vitae
@@ -165,10 +175,30 @@ function Index() {
             tempus lectus. Sed ut tellus velit. Pellentesque sem purus,
           </p>
           <div className={styles.other_releases_grid}>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            {songs ? (
+              songs.map(song => (
+                <a
+                  className={styles.other_releases_grid_anchor}
+                  key={song.id}
+                  href={song.external_urls.spotify}
+                  target='_blank'
+                >
+                  <img
+                    className={styles.other_releases_grid_img}
+                    src={song.image}
+                  ></img>
+                </a>
+              ))
+            ) : (
+              <FadeLoader
+                css={override}
+                size={150}
+                //size={"150px"} this also works
+                color={'#ff253a'}
+                loading={true}
+              />
+            )}
+            {}
           </div>
         </section>
       </div>
@@ -176,5 +206,6 @@ function Index() {
     </Layout>
   );
 }
+
 
 export default Index;

@@ -1,0 +1,77 @@
+.tourDates_title {
+  text-align: center;
+  width: max-content;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0.75em;
+}
+.neswletter_form_container {
+  padding-bottom: 1em;
+}
+
+.neswletter_form_container p {
+  max-width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.neswletter_form .row:last-child {
+  margin-bottom: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 500px;
+}
+
+.newsletter_label {
+  font-size: 0.75em;
+  margin-bottom: 0.25em;
+}
+
+.newsletter_label_asterisk {
+  color: #ff253a;
+  font-size: 1.25em;
+  font-weight: normal;
+  position: relative;
+  top: 2px;
+}
+
+.newsletter_input {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.2s ease-in;
+
+}
+
+
+.button {
+  padding: 0.5em 1.25em;
+  border-radius: 5px;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 auto;
+  display: block;
+}
+
+.button:hover,
+.button:focus,
+.newsletter_input:focus,
+.newsletter_input:hover {
+  outline: none !important;
+  border: 1px solid red;
+  box-shadow: 0 0 10px #ff253a;
+  color: white;
+  background-color: #ff253a;
+}

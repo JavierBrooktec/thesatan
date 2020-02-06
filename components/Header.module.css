@@ -4,6 +4,7 @@
   position: sticky;
   z-index: 1;
   top: 0;
+  margin-bottom: 2em;
 }
 .header {
   display: flex;
@@ -60,6 +61,7 @@
 }
 
 .header_list {
+  font-family: 'Bebas Neue', cursive;
   padding: 0.5em 0;
   list-style: none;
   margin: 0;
@@ -85,7 +87,11 @@
 }
 
 .header_list li:hover a {
-  color: #9d0000;
+  color: #ff253a;
+}
+
+.header_nav_big{
+  display: none;
 }
 
 @media only screen and (min-width: 650px) {
@@ -105,7 +111,6 @@
   }
 
   .header_nav {
-    display: block;
     flex: 1;
   }
 
@@ -116,7 +121,15 @@
   .header_list li:hover {
     background-color: transparent;
   }
+  .header_nav_big {
+    display: block;
+  }
+  .header_nav_small {
+    display: none;
+  }
 }
+
+
 
 @media only screen and (min-width: 768px) {
   .header_title {
@@ -129,4 +142,5 @@
   .header_nav {
     flex: 1.5 1 auto;
   }
+
 }
