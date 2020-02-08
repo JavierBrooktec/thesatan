@@ -1,8 +1,11 @@
+require('dotenv').config();
 const fetch = require('isomorphic-unfetch');
-
+const fs = require('fs');
+const https = require('https');
 const express = require('express');
 const bodyParser = require('body-parser');
 const next = require('next');
+const path = require('path');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -17,6 +20,7 @@ app.prepare().then(() => {
       extended: true
     })
   );
+
   server.use(bodyParser.json());
 
   server.get('/about', (req, res) => {
@@ -34,17 +38,16 @@ app.prepare().then(() => {
           {
             method: 'POST',
             headers: new Headers({
-              Authorization: 'auth de18d9eb66e52bba9fc6d6e3ea42ba21-us4'
+              Authorization: `auth ${process.env.AUTH_MAILCHIMP}`
             }),
             body: postData
           }
         );
         const dataAuth = await resAuth.json();
         if (res.statusCode === 200) {
-            res.json({ state: 'succesfull' });
-        }
-        else {
-            res.json({ state: 'fail'})
+          res.json({ state: 'succesfull' });
+        } else {
+          res.json({ state: 'fail' });
         }
       } catch (error) {
         console.log(e);
@@ -62,8 +65,7 @@ app.prepare().then(() => {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization:
-            'Basic ODgxMTM0ZTdhOTUxNDNhYWE2YTcyZDcwOTkxMjc1Mzk6MjExZWU4ODBiMmJjNDAyOWIzODhhYjEzNWU2YzYwNjM='
+          Authorization: `Basic ${process.env.AUTH_SPOTIFY}`
         }),
         body: 'grant_type=client_credentials'
       });
@@ -110,8 +112,23 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  server.listen(port, err => {
-    if (err) throw err;
-    console.log(`> Ready on http://localhost:${port}`);
-  });
+  if (!dev) {
+    https
+      .createServer(
+        {
+          key: fs.readFileSync(path.join(__dirname, 'server.key')),
+          cert: fs.readFileSync(path.join(__dirname, 'server.cert'))
+        },
+        server
+      )
+      .listen(port, err => {
+        if (err) throw err;
+        console.log(`> Ready on https://localhost:${port}`);
+      });
+  } else {
+    server.listen(port, err => {
+      if (err) throw err;
+      console.log(`> Ready on http://localhost:${port}`);
+    });
+  }
 });
